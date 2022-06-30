@@ -34,75 +34,72 @@ module.exports = {
             hypixel.getSkyblockMember(plr).then(member => {
                 const sbstat = member.get(profiles[0].profileName)
 
-                //make a round and format function to add a comma for 1,000 using intl.formatNumber
                 function formatAndRound(num) {
                     return new Intl.NumberFormat('en-US').format(Math.round(num * 10) / 10)
                 }
-                
+
                 //skills weight
                 const skillWeights = {
                     mining: {
+                        weight: String,
                         exponent: 1.18207448,
                         maxLevel: 60,
+                        maxWeight: 1750
                     },
                     foraging: {
+                        weight: String,
                         exponent: 1.232826,
                         maxLevel: 50,
+                        maxWeight: 850
                     },
                     enchanting: {
+                        weight: String,
                         exponent: 0.96976583,
                         maxLevel: 60,
+                        maxWeight: 450
                     }, 
                     farming: {
+                        weight: String,
                         exponent: 1.217848139,
                         maxLevel: 60,
+                        maxWeight: 2500
                     },
                     combat: {
+                        weight: String,
                         exponent: 1.15797687265,
                         maxLevel: 60,
+                        maxWeight: 1500
                     },
                     fishing: {
+                        weigth: String,
                         exponent: 1.406418,
                         maxLevel: 50,
+                        maxWeight: 2500
                     },
                     alchemy: {
+                        weight: String,
                         exponent: 1.0,
                         maxLevel: 50,
+                        maxWeight: 200
                     },
                     taming: {
+                        weight: String,
                         exponent: 1.14744,
                         maxLevel: 50,
+                        maxWeight: 500
                     },
                 }
-                const maxSkillWeights = {
-                    foraging: 850,
-                    mining: 1750,
-                    enchanting: 450,
-                    farming: 2200,
-                    combat: 1500,
-                    fishing: 2500,
-                    alchemy: 200,
-                    taming: 500
-                }
+
                 function getLevel(name){
                     const decimals = (name.xpCurrent / name.xpForNext)
                     return name.level + decimals
                 }
-                const skillsWeight = {
-                    foraging: String,
-                    mining: String,
-                    enchanting: String,
-                    farming: String,
-                    combat: String,
-                    fishing: String,
-                    alchemy: String,
-                    taming: String
-                }
+
                 function getSkillWeight(skillName){
                     let skill = skillWeights[skillName]
                     let level = getLevel(sbstat.skills[skillName])
 
-                    if(level >= skill.maxLevel) return maxSkillWeights[skillName]
+                    if(level >= skill.maxLevel) return skillWeights[skillName].maxWeight
                     let weight = Math.pow(level * 10, 0.5 + skill.exponent + level / 100) / 1250
                     
                     return weight
@@ -110,7 +107,7 @@ module.exports = {
                 let TotalSkillWeight = String;
                 for (skillname in skillWeights) {
                     TotalSkillWeight = TotalSkillWeight + formatAndRound(getSkillWeight(skillname))
-                    skillsWeight[skillname] = formatAndRound(getSkillWeight(skillname))
+                    skillWeights[skillname].weight = formatAndRound(getSkillWeight(skillname))
                 }
                 message.reply(`Total Skill Weight: ${formatAndRound(TotalSkillWeight)}`)
 
