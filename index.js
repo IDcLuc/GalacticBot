@@ -50,4 +50,4 @@ mongoose.connection.on("connected", () => {
 })
 messageCount(client)
 
-client.login(process.env.KEY)
+client.login(process.env.KEY) 
