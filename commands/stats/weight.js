@@ -199,10 +199,10 @@ module.exports = {
                     TotalSlayerWeight = TotalSlayerWeight + getSlayerWeight(slayerName)
                     slayerWeights[slayerName].weight = formatAndRound(getSlayerWeight(slayerName))
                 }
-                const totalDungeonWeight = formatAndRound(TotalDungeonWeight)
-                const totalSkillWeight = formatAndRound(TotalSkillWeight)
-                const totalSlayerWeight = formatAndRound(TotalSlayerWeight)
-                const TotalWeight = formatAndRound(TotalDungeonWeight + TotalSkillWeight + TotalSlayerWeight)
+                TotalDungeonWeight = formatAndRound(TotalDungeonWeight)
+                TotalSkillWeight = formatAndRound(TotalSkillWeight)
+                TotalSlayerWeight = formatAndRound(TotalSlayerWeight)
+                TotalWeight = formatAndRound(TotalDungeonWeight + TotalSkillWeight + TotalSlayerWeight)
 
                 function between(min, max, num){
                     return num >= min && num <= max
