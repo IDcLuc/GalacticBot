@@ -18,6 +18,7 @@ module.exports = {
 
         const cardType = await cardtype.findOne({ userID: member.id })
         const dataQuery = await schema.findOne({ userID: member.id, guildID: message.guild.id })
+        
         if(cardType && cardType.cardType === 'image') {
             if (dataQuery) {
                 const msgcount = dataQuery.messageCount
@@ -71,18 +72,10 @@ module.exports = {
                 } 
                 for (let index in levelRequirements) {
                     if(between(msgcount, levelRequirements[index], levelRequirements[++index])) {
-                        const embed = new MessageEmbed()
-                            .setColor('#0099ff')
-                            .setTitle(`${member.user.username}#${member.user.discriminator}'s level`)
-                            .addFields(
-                                { name: 'Level', value: `${index}`, inline: true },
-                                { name: 'Messages:', value: `${msgcount}`, inline: true },
-                                { name: 'Next Level in:', value: `${nextReq}`, inline: true },
-                                { name: 'Progress:', value: `0% | 0/10\n${progressbar}`, inline: true }
-                            )
-                            .setFooter({ text: `Galactic Bot ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
-                            .setThumbnail(message.author.displayAvatarURL())
-                        message.channel.send({ embeds: [embed] })
+                        let level = index
+                        const nextLevel = levelRequirements[++index]
+                        const card = await rankCard(member, level, msgcount, nextLevel)
+                        message.reply({ files: [card] })
                     }
                 }
             }
@@ -90,7 +83,6 @@ module.exports = {
                 const lvl0card = await rankCard(member, 0, 0, 10)
                 message.reply({ files: [lvl0card] })
             }
-            
         } 
         function between(num, min, max) { 
             return num >= min && num < max;
