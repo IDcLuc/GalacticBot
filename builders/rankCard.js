@@ -14,7 +14,7 @@ const color = Math.random() < 0.5 ? "#059033" : "#4c3228"
 const backgroundImage = "https://i.imgur.com/8iAnjlv.png"
 
 const RankCard = async (member, lvl, msgcount, msgneeded) => {
-    let percentage = Math.floor((msgcount / msgneeded) * 100)
+    let percentage = Math.floor(msgcount / msgneeded * 100)
     let username = member.user.username
     let discrim = member.user.discriminator
     
@@ -58,15 +58,15 @@ const RankCard = async (member, lvl, msgcount, msgneeded) => {
     //type level
     ctx.fillStyle = "white"
     ctx.textAlign = "left"
-    ctx.font = "115px FORQUE"
-    ctx.fillText(`${lvl}`, 1775, 173)
+    ctx.font = "100px FORQUE"
+    ctx.fillText(`${lvl}`, 1767, 173)
 
     //draw progress bar
     for(let i = 0; i < percentage; i++)  {
         ctx.beginPath()
         ctx.lineWidth = 81
         ctx.fillStyle = color
-        ctx.arc(568 + (i * 12.14), 406, 39, 0, Math.PI * 2, true)
+        ctx.arc(608 + (i * 11.35), 406, 41, 0, Math.PI * 2, true)
         ctx.fill()
     }
 
@@ -74,7 +74,7 @@ const RankCard = async (member, lvl, msgcount, msgneeded) => {
     ctx.fillStyle = "white"
     ctx.textAlign = "left"
     ctx.font = "88px FORQUE"
-    ctx.fillText(`${username}#${discrim}`, 550, 333)
+    ctx.fillText(`${username}#${discrim}`, 606, 333)
 
     //export image
     return new Discord.MessageAttachment(canvas.toBuffer(), `${username}#${discrim}.png`)
