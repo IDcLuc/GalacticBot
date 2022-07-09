@@ -19,7 +19,7 @@ module.exports = {
             .then(player => player.success);
         }
           const id = await checkName(plr)
-          if(id == false) return message.reply(`\`${plr}\` isn't a valid minecraft username!`)
+          if(!id) return message.reply(`\`${plr}\` isn't a valid minecraft username!`)
 
         let playerObj = await hypixel.getPlayer(plr)
         let stats = playerObj.stats.skywars

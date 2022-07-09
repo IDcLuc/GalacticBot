@@ -271,9 +271,14 @@ module.exports = {
                     .setFooter({ text: `Galactic Bot Stats ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
                 message.channel.send({ embeds: [weightEmbed] })
             }).catch(e => {
-                console.log(e)
-                message.reply('An error occured. Is your API public?')
-            })  
+                if (e == "TypeError: Cannot read properties of null (reading 'farming')")
+                    message.reply('Your skills API returned null. Please turn it on and try again.')
+                
+                else if (e == "TypeError: Cannot read properties of null (reading 'catacombs')")
+                    message.reply('Your dungeons API returned null. Please turn it on and try again.')
+                
+                else message.reply(`An error occured. Please report it with \`g!suggest "${e}"\`.`)
+            })
         })
     }
 }

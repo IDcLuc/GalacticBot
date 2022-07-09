@@ -15,9 +15,8 @@ module.exports = {
             return fetch(`https://playerdb.co/api/player/minecraft/${player}`)
               .then(data => data.json())
               .then(player => player.success);
-            }
-            const id = await getId(plr)
-            if(id == false) return message.reply(`\`${plr}\` isn't a valid minecraft username!`)
+        } const id = await getId(plr)
+        if(!id) return message.reply(`\`${plr}\` isn't a valid minecraft username!`)
   
         let playerObj = await hypixel.getPlayer(plr)
         let bedWarsStats = playerObj.stats.bedwars 

@@ -17,12 +17,14 @@ module.exports = {
             .then(player => player.success);
         }
         const success = await checkname(plr)
-        if(success == false) return message.reply(`\`${plr}\` isn't a valid minecraft username!`)
+        if(!success) return message.reply(`\`${plr}\` isn't a valid minecraft username!`)
+
         function getUUID(player) {
             return fetch(`https://playerdb.co/api/player/minecraft/${player}`)
             .then(data => data.json())
             .then(player => player.data.player.raw_id)
         }; const playerID = await getUUID(plr)
+        
         function playedSkyblock(playerUUID) {
             return fetch(`https://api.hypixel.net/skyblock/profiles?uuid=${playerUUID}&key=${process.env.apikey}`)
             .then(data => data.json())
