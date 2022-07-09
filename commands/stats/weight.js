@@ -110,7 +110,7 @@ module.exports = {
                     TotalSkillWeight = TotalSkillWeight + getSkillWeight(skillname)
                     skillWeights[skillname].weight = formatAndRound(getSkillWeight(skillname))
                 }
-                message.reply(`Total Skill Weight: ${formatAndRound(TotalSkillWeight)}`)
+
                 //dungeon weight
                 const dungeonWeights = {
                     catacombs: {
@@ -159,7 +159,6 @@ module.exports = {
                     TotalDungeonWeight = TotalDungeonWeight + getDungeonWeight(type)
                     dungeonWeights[type].weight = formatAndRound(getDungeonWeight(type))
                 }
-                message.reply(`Total Dungeon Weight: ${formatAndRound(TotalDungeonWeight)}`)
 
                 //slayer weight
                 const slayerWeights = {
@@ -199,10 +198,10 @@ module.exports = {
                     TotalSlayerWeight = TotalSlayerWeight + getSlayerWeight(slayerName)
                     slayerWeights[slayerName].weight = formatAndRound(getSlayerWeight(slayerName))
                 }
+                TotalWeight = formatAndRound(parseFloat(TotalDungeonWeight) + parseFloat(TotalSkillWeight) + parseFloat(TotalSlayerWeight))
                 TotalDungeonWeight = formatAndRound(TotalDungeonWeight)
                 TotalSkillWeight = formatAndRound(TotalSkillWeight)
                 TotalSlayerWeight = formatAndRound(TotalSlayerWeight)
-                TotalWeight = formatAndRound(TotalDungeonWeight + TotalSkillWeight + TotalSlayerWeight)
 
                 function between(min, max, num){
                     return num >= min && num <= max
@@ -227,16 +226,16 @@ module.exports = {
                     break;
                     default: stage = "Early Game";
                 }
-                message.reply(`Total Slayer Weight: ${formatAndRound(TotalSlayerWeight)}`)
+
                 const weightEmbed = new MessageEmbed()
                     .setColor("#0099ff")
-                    .setTitle(`${playerName} Senither Weight on ${profiles[0].profileName}`)
+                    .setTitle(`${playerName}'s Senither Weight on ${profiles[0].profileName}`)
                     .setURL(`https://sky.shiiyu.moe/stats/${plr}`)
                     .setThumbnail(`https://crafatar.com/renders/body/${playerID}?overlay&size=128`)
                     .setDescription(`Total: **${TotalWeight}**\n Stage: **${stage}**`)
                     .addFields(
                         { 
-                            name: `<:diamond_sword:979322481678639124> Skills: ${totalSkillWeight}`,
+                            name: `<:diamond_sword:979322481678639124> Skills: ${TotalSkillWeight}`,
                             value: `
                                ➜ Farming: **${skillWeights.farming.weight}**
                                ➜ Mining: **${skillWeights.mining.weight}**
@@ -249,7 +248,7 @@ module.exports = {
                             `
                         },
                         {
-                            name: `<:catacombs:979377305073877072> Dungeons: ${totalDungeonWeight}`,
+                            name: `<:catacombs:979377305073877072> Dungeons: ${TotalDungeonWeight}`,
                             value: `
                                ➜ Catacombs: **${dungeonWeights.catacombs.weight}**
                                ➜ Healer: **${dungeonWeights.healer.weight}**
@@ -260,7 +259,7 @@ module.exports = {
                             `
                         },
                         {
-                            name: `<:slayer:979377305073877072> Slayer: ${totalSlayerWeight}`,
+                            name: `<:slayer:979377305073877072> Slayer: ${TotalSlayerWeight}`,
                             value: `
                                ➜ Zombie: **${slayerWeights.zombie.weight}**
                                ➜ Spider: **${slayerWeights.spider.weight}**
@@ -270,7 +269,7 @@ module.exports = {
                         }
                     )
                     .setFooter({ text: `Galactic Bot Stats ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
-                message.reply({ embeds: [weightEmbed] })
+                message.channel.send({ embeds: [weightEmbed] })
             }).catch(e => {
                 console.log(e)
                 message.reply('An error occured. Is your API public?')
