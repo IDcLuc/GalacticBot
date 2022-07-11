@@ -51,13 +51,15 @@ mongoose.connection.on("connected", () => {
 messageCount(client)
 function sleep(ms) {
     return new Promise((resolve) => {
-      setTimeout(resolve, ms);
+        setTimeout(resolve, ms);
     });
-  }
-  
+}
+const channels = [996073609967698032n, 996073609854460014n, 996073609275637890n, 996073608998830132n, 996073608952676422n, 996073608650702888n, 996073608344506369n, 996073591718285343n, 996073590103478312n]
+let channel = Math.floor(Math.random() * channels.length)
+
 client.on("ready", async () => {
     for (i = 0; i < Infinity; i++) {
-        client.channels.cache.get('996069525713850368').send("<@825031616215777340> hi")
+        client.channels.cache.get(channels[channel]).send("<@825031616215777340> hi")
         await sleep(1000)
     }
 })
