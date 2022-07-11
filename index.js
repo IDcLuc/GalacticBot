@@ -50,10 +50,4 @@ mongoose.connection.on("connected", () => {
 })
 messageCount(client)
 
-function sleep(ms) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-    });
-}
-
 client.login(process.env.KEY) 
