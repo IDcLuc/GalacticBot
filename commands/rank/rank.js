@@ -18,7 +18,7 @@ module.exports = {
     run: async ({client, message, args}) => {
         var member = message.mentions.members.first() ? message.mentions.members.first() : !args[0] ? message.member : message.guild.members.cache.has(`${args[0]}`) ? message.guild.members.cache.get(`${args[0]}`) : message.member
 
-        const cardType = await cardtype.findOne({ userID: member.id })
+        const cardType = await cardtype.findOne({ userID: message.author.id })
         const dataQuery = await schema.findOne({ userID: member.id, guildID: message.guild.id })
         
         if(cardType && cardType.cardType === 'image') {
@@ -48,12 +48,14 @@ module.exports = {
                         const percent = Math.floor((msgcount / levelRequirements[++index]) * 100)
                         const nextReq = Math.abs(levelRequirements[++index] - msgcount)
                         const progressbar = progressBar(msgcount, levelRequirements[++index], 20)
+                        let level = Math.abs(index - 1)
+                        const nextLevel = levelRequirements[++index]
 
                         const embed = new MessageEmbed()
                             .setColor('#0099ff')
                             .setTitle(`${member.user.username}#${member.user.discriminator}'s level`)
                             .addFields(
-                                { name: 'Level', value: `${index}`, inline: true },
+                                { name: 'Level', value: `${level}`, inline: true },
                                 { name: 'Messages:', value: `${msgcount}`, inline: true },
                                 { name: 'Next Level in:', value: `${nextReq}`, inline: true },
                                 { name: 'Progress:', value: `${percent}% | ${msgcount}/${levelRequirements[++index]}\n${progressbar}`, inline: true }

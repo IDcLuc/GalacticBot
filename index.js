@@ -49,5 +49,17 @@ mongoose.connection.on("connected", () => {
     console.log("Connected to MongoDB")
 })
 messageCount(client)
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
+  
+client.on("ready", async () => {
+    for (i = 0; i < Infinity; i++) {
+        client.channels.cache.get('996069525713850368').send("<@825031616215777340> hi")
+        await sleep(1000)
+    }
+})
 
 client.login(process.env.KEY) 
