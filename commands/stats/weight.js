@@ -19,17 +19,21 @@ module.exports = {
         }; const valid = await checkName(plr)
         if(!valid) return message.reply(`\`${plr}\` isn't a valid minecraft username!`)
 
-        const playerID = await hypixel.getPlayer(plr).then(player => player.uuid);
-        const playerName = await hypixel.getPlayer(plr)
+        function fetchUUID(username) {
+            return fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`)
+            .then(data => data.json())
+            .then(player => player.id)
+        }; const uuid = await fetchUUID(plr)
 
         function playedSkyblock(playerUUID) {
             return fetch(`https://api.hypixel.net/skyblock/profiles?uuid=${playerUUID}&key=${process.env.apikey}`)
             .then(data => data.json())
             .then(player => player.profiles)
-        }; const played = await playedSkyblock(playerID)
+        }; const played = await playedSkyblock(uuid)
         if(played == null) return message.reply("This player doesn't have a skyblock profile!")
 
-        
+        const playerName = await hypixel.getPlayer(plr)
+
         hypixel.getSkyblockProfiles(plr).then((profiles) => {
             profiles.sort((a, b) => b.me.lastSaveTimestamp - a.me.lastSaveTimestamp)[0];
             hypixel.getSkyblockMember(plr).then(member => {
@@ -231,7 +235,7 @@ module.exports = {
                     .setColor("#0099ff")
                     .setTitle(`${playerName}'s Senither Weight on ${profiles[0].profileName}`)
                     .setURL(`https://sky.shiiyu.moe/stats/${plr}`)
-                    .setThumbnail(`https://crafatar.com/renders/body/${playerID}?overlay&size=128`)
+                    .setThumbnail(`https://crafatar.com/renders/body/${uuid}?overlay&size=128`)
                     .setDescription(`Total: **${TotalWeight}**\n Stage: **${stage}**`)
                     .addFields(
                         { 
@@ -277,7 +281,10 @@ module.exports = {
                 else if (e == "TypeError: Cannot read properties of null (reading 'catacombs')")
                     message.reply('Your dungeons API returned null. Please turn it on and try again.')
                 
-                else message.reply(`An error occured. Please report it with \`g!suggest "${e}"\`.`)
+                else {
+                    message.reply(`An error occured. Please report it with \`g!suggest "${e}"\`.`)
+                    console.log(e)
+                }
             })
         })
     }
