@@ -21,7 +21,7 @@ module.exports = {
         const cardType = await cardtype.findOne({ userID: message.author.id })
         const dataQuery = await schema.findOne({ userID: member.id, guildID: message.guild.id })
         
-        if(cardType && cardType.cardType === 'image') {
+        if(cardType?.cardType === 'image') {
             if (dataQuery) {
                 const msgcount = dataQuery.messageCount
 
@@ -39,7 +39,7 @@ module.exports = {
                 message.reply({ files: [lvl0card] })
             }
         }
-        else if(cardType && cardType.cardType === 'embed') {
+        else if(cardType?.cardType === 'embed') {
             if (dataQuery) {
                 const msgcount = dataQuery.messageCount
 
