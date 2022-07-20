@@ -3,10 +3,11 @@ module.exports = {
     aliases: ["stop", "logout"],
     category: "misc",
     permissions: [],
-    devOnly: true,
+    devOnly: false,
     run: async ({client, message, args}) => {
-        await message.channel.send("Logging out...").then(msg => msg.edit('Logging out..')).then(msg => msg.edit('Logging out...')).then(msg => msg.edit('Logging out..')).then(msg => msg.edit('Logging out...')).then(msg => msg.edit('Logged out.'))
-        await client.destroy()
-        console.log("Client logged out.")
+        if (args[0] && args[0] === "fugaltic") {
+            client.destroy()
+        }
+        else message.reply('no im gonna destroy u b**ch')
     }
 }
