@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 require("dotenv").config()
 const imageGenerator = require("./builders/welcomeImage")
 const mongoose = require("mongoose")
-const messageCount = require("./message-counter.js")
+const messageCount = require("./builders/message-counter.js")
 
 const client = new Discord.Client({
     intents: [
