@@ -11,7 +11,7 @@ module.exports = client => {
         const messages = await message.channel.messages.fetch()
         const userMessages = await messages.filter(m => m.author.id === message.author.id)
         const userLastMessage = userMessages.first(2)[1]
-        if (userLastMessage && Math.abs(userLastMessage.createdAt - message.createdAt) < 15000) return
+        if (userLastMessage && Math.abs(userLastMessage.createdAt - message.createdAt) < 5000) return
         
         let member = message.author.id
         let dataQuery = await schema.findOne({ userID: member, guildID: message.guild.id })
