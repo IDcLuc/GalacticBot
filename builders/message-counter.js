@@ -1,5 +1,5 @@
 const mongo = require("mongoose")
-const schema = require("./schemas/rank/message-count-schema")
+const schema = require("../schemas/rank/message-count-schema")
 
 module.exports = client => {
     client.on('messageCreate', async (message) => {    
