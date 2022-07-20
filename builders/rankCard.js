@@ -74,7 +74,7 @@ const RankCard = async (member, lvl, msgcount, msgneeded) => {
     ctx.fillStyle = "white"
     ctx.textAlign = "left"
     ctx.font = "88px FORQUE"
-    ctx.fillText(`${username}#${discrim}`, 606, 333)
+    ctx.fillText(`${username}#${discrim}`, 606, 173)
 
     //export image
     return new Discord.MessageAttachment(canvas.toBuffer(), `${username}#${discrim}.png`)
