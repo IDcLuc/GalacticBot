@@ -283,7 +283,6 @@ module.exports = {
                 
                 else {
                     message.reply(`An error occured. Please report it with \`g!suggest "${e}"\`.`)
-                    console.log(e)
                 }
             })
         })
