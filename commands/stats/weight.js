@@ -1,4 +1,4 @@
-const hypixel = require('../../hypixelapi');
+const hypixel = require('../../builders/hypixelapi');
 const fetch = require("node-fetch")
 const { MessageEmbed } = require('discord.js');
 

@@ -1,5 +1,5 @@
 const { MessageEmbed } =  require('discord.js')
-const hypixel = require('../../hypixelapi');
+const hypixel = require('../../builders/hypixelapi');
 const fetch = require('node-fetch')
 module.exports = {
     name: "bw",
