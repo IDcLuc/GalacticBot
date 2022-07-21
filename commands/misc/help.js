@@ -15,11 +15,10 @@ module.exports = {
             .setDescription(`The prefix for **${message.guild.name}** is **"g!"**. Use g!help [command] to get info about a specific command.`)
             .addFields(
                 { name: "Misc", value: "help, ping, prefix, suggest" },
-                { name: "Moderation", value: "kick, ban, mute"},
+                { name: "Moderation", value: "kick, ban, timeout"},
                 { name: "Fun", value: "pikachu, cat, dog, confirmbald, fox, meme"},
                 { name: "Search", value: "namemc, skycrypt"},
                 { name: "Stats", value: "bedwars, skywars, skills, weight"},
-                { name: 'Rank', value: 'rank'}
             )
             .setFooter({ text: `Galactic Bot ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
             
@@ -209,15 +208,15 @@ module.exports = {
             )
             .setFooter({ text: `Galactic Bot ● Powered by some-random-api.ml ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
         
-        let rank = new MessageEmbed()
-        rank
-            .setTitle("Rank")
-            .setDescription("Gets a user's rank.")
-            .addFields(
-                { name: "Usage", value: "g!rank (ping)"},
-                { name: "Example", value: "g!rank <@344967184113467392>"}
-            )
-            .setFooter({ text: `Galactic Bot ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
+        // let rank = new MessageEmbed()
+        // rank
+        //     .setTitle("Rank")
+        //     .setDescription("Gets a user's rank.")
+        //     .addFields(
+        //         { name: "Usage", value: "g!rank (ping)"},
+        //         { name: "Example", value: "g!rank <@344967184113467392>"}
+        //     )
+        //     .setFooter({ text: `Galactic Bot ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
         
         switch(cmdname){
         case ("kick"):
