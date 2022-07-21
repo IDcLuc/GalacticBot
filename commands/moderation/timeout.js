@@ -3,19 +3,19 @@ const { MessageMentions } = require("discord.js")
 const { Permissions } = require("discord.js")
 
 module.exports = {
-    name: "mute",
+    name: "timeout",
     category: "moderation",
-    permissions: ['MANAGE_ROLES'],
+    permissions: ['MODERATE_MEMBERS'],
     devOnly: false,
     run: async ({client, message, args}) => {
         if (!args[0]){
         let embed = new MessageEmbed()
         embed
-            .setTitle("Mute")
-            .setDescription("Mute a member from the discord server.")
+            .setTitle("Timeout")
+            .setDescription("Time someone out.")
             .setColor("#863b87")
             .addFields(
-                { name: "Usage", value: "g!mute [member] [reason]"},
+                { name: "Usage", value: "g!timeout [member] []"},
                 { name: "Example", value: "g!mute <@453943223229087748> Excessive usage of bad words"}
             )
             .setFooter({ text: `Galactic Bot ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
