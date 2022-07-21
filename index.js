@@ -48,6 +48,5 @@ mongoose.connect(
 mongoose.connection.on("connected", () => {
     console.log("Connected to MongoDB")
 })
-messageCount(client)
 
 client.login(process.env.KEY) 
