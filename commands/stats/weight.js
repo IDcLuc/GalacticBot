@@ -281,7 +281,7 @@ module.exports = {
                     message.reply('Your dungeons API returned null. Please turn it on and try again.')
                 else
                     message.reply(`An error occured. Please report it with \`g!suggest "${e}"\`.`)
-            })
+            }) 
         })
     }
 }
