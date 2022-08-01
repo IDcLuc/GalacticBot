@@ -62,7 +62,7 @@ module.exports = {
             .addFields(
                 { name: "Usage", value: "g!suggest [suggestion]"},
                 { name: "Alias", value: "g!suggestion"},
-                { name: "Example", value: "g!suggest Add a networth command kid smh\ng!suggestion Get better response time smh"},
+                { name: "Example", value: "g!suggest Add a networth command\ng!suggestion Get better response time smh"},
             )
             .setFooter({ text: `Galactic Bot by IDcLuc ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
 
