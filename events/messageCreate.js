@@ -26,10 +26,10 @@ module.exports = {
     const timestamps = cooldowns.get(command.name)
     const cooldownAmount = (command.cooldown) * 1000
 
-    if(timestamps.has(message.author.id)){
+    if(timestamps.has(message.author.id && !owners.includes(message.author.id))){
         const expirationTime = timestamps.get(message.author.id) + cooldownAmount
 
-        if(now < expirationTime && !owners.includes(message.author.id)){
+        if(now < expirationTime){
             const timeLeft = (expirationTime - now) / 1000
             return message.reply(`Please wait ${timeLeft.toFixed(1)} more seconds to use this command.`)
         }
