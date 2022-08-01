@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: "suggest",
     aliases: ["suggestion"],
-    cooldown: 300,
+    cooldown: 30,
     category: "misc",
     permissions: [],
     devOnly: false,
@@ -17,9 +17,9 @@ module.exports = {
             .addFields(
                 { name: "Usage", value: "g!suggest [suggestion]"},
                 { name: "Alias", value: "g!suggestion"},
-                { name: "Example", value: "g!suggest Add a networth command kid smh\ng!suggestion Get better response time smh"},
+                { name: "Example", value: "g!suggest Add a networth command\ng!suggestion Get better response time smh"},
             )
-            .setFooter({ text: `Galactic Bot by IDcLuc ● Requested by ${message.author.tag}`, iconURL: "https://cdn.discordapp.com/avatars/952178870646366248/387f44e15d6eb3d51d5ebeddf0503937.webp?size=240"})
+            .setFooter({ text: `Galactic Bot by IDcLuc ● Requested by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() })
         if (!args[0]) return message.reply({ embeds: [suggestembed] })
         const suggestion = args.slice(0).join(" ")
         const suggested = new MessageEmbed()
