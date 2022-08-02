@@ -39,14 +39,14 @@ client.loadCommands(bot, false)
 
 module.exports = bot
 
-mongoose.connect(
-    process.env.MONGO_URI,
-    { 
-        keepAlive: true
-    }
-)
-mongoose.connection.on("connected", () => {
-    console.log("Connected to MongoDB")
-})
+// mongoose.connect(
+//     process.env.MONGO_URI,
+//     { 
+//         keepAlive: true
+//     }
+// )
+// mongoose.connection.on("connected", () => {
+//     console.log("Connected to MongoDB")
+// })
 
 client.login(process.env.KEY) 
