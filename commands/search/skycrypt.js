@@ -23,11 +23,6 @@ module.exports = {
             return message.reply({ embeds: [embed] })            
         }
         
-        if (args[1])
-        return message.reply("You can only include one argument (username) in this command!")
-
-        message.reply(`Here you go! https://sky.shiiyu.moe/stats/${args[0]}`)
-
+        return message.reply(`Here you go! https://sky.shiiyu.moe/stats/${args[0]}`)
     }
-
 }
