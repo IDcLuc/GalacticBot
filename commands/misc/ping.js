@@ -6,7 +6,7 @@ module.exports = {
     devOnly: false, 
     run: async ({client, message, args}) => {
         const msg = await message.channel.send("Pinging...");
-        let APIping = Math.abs(Date.now() - message.createdTimestamp)
+        let APIping = client.ws.ping
         let botPing = Math.abs(message.createdTimestamp - msg.createdTimestamp)
         setTimeout(() => {
             msg.edit(`Pong!\nAPI latency: \`${APIping}ms\` \nBot message response latency: \`${botPing}ms\``)
