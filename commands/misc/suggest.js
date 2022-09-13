@@ -26,8 +26,8 @@ module.exports = {
             .setTitle("Suggestion")
             .setDescription(suggestion)
             .setColor("#863b87")
-            .setFooter({ text: `Suggested by ${message.author.tag}`, iconURL: message.author.displayAvatarURL({ format: "png", dynamic: true })})
-        await suggestionsChannel.send({ embeds: [suggested], content: "<@495514555615543329>" }).catch(err => console.log(err))
+            .setFooter({ text: `Suggested by ${message.author.tag} (${message.author})`, iconURL: message.author.displayAvatarURL({ format: "png", dynamic: true })})
+        await suggestionsChannel.send({ embeds: [suggested], content: "<@495514555615543329>" }).catch(console.log)
         message.reply("Your suggestion has been sent to the bot contributors.")
     }
 }
