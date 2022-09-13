@@ -122,8 +122,8 @@ module.exports = {
             )
             .setFooter({ text: `Galactic Bot ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
 
-        let bw = new MessageEmbed()
-        bw
+        let bwembed = new MessageEmbed()
+        bwembed
             .setTitle("BedWars")
             .setDescription("Gets someone's BedWars stats.")
             .addFields(
@@ -132,8 +132,8 @@ module.exports = {
                 { name: "Example", value: "g!bedwars Majorx500 \n g!bw IDcLuc"}
             )
             .setFooter({ text: `Galactic Bot ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
-        let sw = new MessageEmbed()
-        sw
+        let swembed = new MessageEmbed()
+        swembed
             .setTitle("SkyWars")
             .setDescription("Gets someone's SkyWars stats.")
             .addFields(
@@ -208,73 +208,63 @@ module.exports = {
             )
             .setFooter({ text: `Galactic Bot ● Powered by some-random-api.ml ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
         
-        // let rank = new MessageEmbed()
-        // rank
-        //     .setTitle("Rank")
-        //     .setDescription("Gets a user's rank.")
-        //     .addFields(
-        //         { name: "Usage", value: "g!rank (ping)"},
-        //         { name: "Example", value: "g!rank <@344967184113467392>"}
-        //     )
-        //     .setFooter({ text: `Galactic Bot ● Requested by ${message.author.tag}`, iconURL: client.user.displayAvatarURL()})
-        
         switch(cmdname){
-        case ("kick"):
-            message.reply({ embeds: [kickembed] })
-        break;
-        case ("ban"):
-            message.reply({ embeds: [banembed] })
-        break;
-        case ("mute"):
-            message.reply({ embeds: [muteembed] })
-        break;
-        case ("ping" || "pong"):
-            message.reply({ embeds: [pingembed] })
-        break;
-        case ("prefix" || "pref"):
-            message.reply({ embeds: [prefixembed] })
-        break;
-        case ("namemc" || "nmc"):
-            message.reply({ embeds: [nmcembed]})
-        break;
-        case ("skycrypt" || "sb" || "stats"):
-            message.reply({ embeds: [statsembed] })
-        break;
-        case ("bald" || "confirmbald"):
-            message.reply({ embeds: [baldembed]} )
-        break;
-        case ("suggest" || "suggestion"):
-            message.reply({ embeds: [suggestembed] })
-        break;
-        case ("bw" || "bedwars"): 
-            message.reply({ embeds: [bwembed] })    
-        break;
-        case ("sw" || "skywars"):
-            message.reply({ embeds: [swembed] })
-        break;
-        case ("weight"):
-            message.reply({ embeds: [weightembed] })
-        break;
-        case ("skills" || "skill" || "sa" || "skillavg"):
-            message.reply({ embeds: [skillsembed] })
-        break;
-        case ("cat"):
-            message.reply({ embeds: [catembed] })
-        break;
-        case ("dog"):
-            message.reply({ embeds: [dogembed] })
-        break;
-        case ("fox"):
-            message.reply({ embeds: [foxembed] })
-        break;
-        case ("meme"):
-            message.reply({ embeds: [memeembed] })
-        break;
-        case ("pikachu"):
-            message.reply({ embeds: [pikachu] })
-        break;
-        default:
-            message.reply({ embeds: [defaultembed]})
+            case ("kick"):
+               message.reply({ embeds: [kickembed] })
+            break;
+            case ("ban"):
+                message.reply({ embeds: [banembed] })
+            break;
+            case ("mute"):
+                message.reply({ embeds: [muteembed] })
+            break;
+            case ("ping" || "pong"):
+                message.reply({ embeds: [pingembed] })
+            break;
+            case ("prefix" || "pref"):
+                message.reply({ embeds: [prefixembed] })
+            break;
+            case ("namemc" || "nmc"):
+                message.reply({ embeds: [nmcembed]})
+            break;
+            case ("skycrypt" || "sb" || "stats"):
+                message.reply({ embeds: [statsembed] })
+            break;
+            case ("bald" || "confirmbald"):
+                message.reply({ embeds: [baldembed]} )
+            break;
+            case ("suggest" || "suggestion"):
+                message.reply({ embeds: [suggestembed] })
+            break;
+            case ("bw" || "bedwars"): 
+                message.reply({ embeds: [bwembed] })    
+            break;
+            case ("sw" || "skywars"):
+                message.reply({ embeds: [swembed] })
+            break;
+            case ("weight"):
+                message.reply({ embeds: [weightembed] })
+            break;
+            case ("skills" || "skill" || "sa" || "skillavg"):
+                message.reply({ embeds: [skillsembed] })
+            break;
+            case ("cat"):
+                message.reply({ embeds: [catembed] })
+            break;
+            case ("dog"):
+                message.reply({ embeds: [dogembed] })
+            break;
+            case ("fox"):
+                message.reply({ embeds: [foxembed] })
+            break;
+            case ("meme"):
+                message.reply({ embeds: [memeembed] })
+            break;
+            case ("pikachu"):
+                message.reply({ embeds: [pikachu] })
+            break;
+            default:
+                message.reply({ embeds: [defaultembed]})
         }
     }
 }
