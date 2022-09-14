@@ -14,7 +14,7 @@ module.exports = {
         const args = message.content.slice(prefix.length).trim().split(/ +/g)
         const cmdstr = args.shift().toLowerCase()
 
-        let command = client.commands.get(cmdstr) || client.commands.find(a => a.aliases && a.aliases.includes(cmdstr))
+        let command = client.commands.get(cmdstr) || client.commands.find(a => a.aliases?.includes(cmdstr))
 
         if (!command) return
 
