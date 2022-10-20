@@ -18,15 +18,6 @@ let bot = {
     owners: ["495514555615543329"]
 }
 
-const welcomeChannelId = '986310622876676136'
-
-client.on("guildMemberAdd", async (member) => {               
-    const img = await imageGenerator(member)
-    member.guild.channels.cache.get(welcomeChannelId).send({
-        content: `Hey, <@${member.id}>! Welcome to the server, please make sure to read the rules before chatting!`,
-        files: [img]
-    })
-})
 
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
